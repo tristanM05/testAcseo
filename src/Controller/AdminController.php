@@ -16,6 +16,7 @@ class AdminController extends AbstractController
 {
     /**
      * @Route("/admin/panel", name="adminPanel")
+     * affichage de tous les customers
      */
     public function index(CustomerRepository $repo, MessageRepository $repo_message): Response
     {
@@ -28,6 +29,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/customer/{id}", name="showCustomer")
+     * Page de détail d'un customer contenant ces différents messages
      */
     public function showCustomer(Customer $customer, MessageRepository $repo){
 
@@ -41,6 +43,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/message/{id}", name="showMessage")
+     * Affichage d'un message
      */
     public function showMessage(Message $message, EntityManagerInterface $manager){
 
@@ -59,6 +62,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/message/delete/{id}", name="deleteMessage")
+     * Suppression d'un message.
      */
     public function deleteMessage(Message $message, EntityManagerInterface $manager, Request $req){
 
@@ -74,6 +78,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/customer/delete/{id}", name="deleteCustomer")
+     * Suppression d'un customer. 
      */
     public function deleteCustomer(Customer $customer, EntityManagerInterface $manager, Request $req){
 

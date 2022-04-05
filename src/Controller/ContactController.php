@@ -29,6 +29,7 @@ class ContactController extends AbstractController
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
+        // Récupération des données du formulaire
         $messageContact = $contact->getMessage();
         $mail = $contact->getEmail();
         $lastname = $contact->getLastname();
@@ -36,6 +37,7 @@ class ContactController extends AbstractController
         $phone = $contact->getPhone();
 
         if($form->isSubmitted() && $form->isValid()){
+            //initialisation de l'envoie du mail.
             $message = (new TemplatedEmail())
                 ->from($mail)
                 ->to('acseo@contact.fr')
@@ -50,7 +52,8 @@ class ContactController extends AbstractController
 
                 $existCustomer = $repo->findOneBy(["mail" => $mail]);
                 $now = new DateTime("now");
-
+                
+                // condition permettant de vérifier si un customer est déja existant ou non, afin de lui créé son propre répertoire si il n'existe pas.
                 if($existCustomer){
                     $newMessage->setCustomer($existCustomer);
                     $newMessage->setFistrName($firstname);
@@ -61,6 +64,7 @@ class ContactController extends AbstractController
                     $newMessage->setVu(1);
                     $newMessage->setCreatedAt($now);
 
+                    // création du tableau pour le fichier JSON unique.
                     $data = [];
                     $data["Nom"] = $lastname;
                     $data["Prénom"] = $firstname;

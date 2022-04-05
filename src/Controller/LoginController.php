@@ -11,6 +11,7 @@ class LoginController extends AbstractController
 {
     /**
      * @Route("/admin/login", name="app_login")
+     * Connexion au compte administrateur
      */
     public function index(AuthenticationUtils $outils): Response
     {

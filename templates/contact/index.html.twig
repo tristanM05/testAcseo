@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<div class="navigation">
+    <div class="divBtn">
+        <a href="{{path('app_login')}}" class="btnPage btn">Connexion administartion</a>
+    </div>
+</div>
+<div class="mb-3">
+    {% for message in app.flashes('success') %}
+        <div class="container alert alert-success text-center" id="alertInfo">
+            {{message}}
+        </div>
+    {% endfor %}
+</div>
+<div class="form">
+    <div class="card d-flex cardForm">
+        <div class="card-header">
+           <p class="pCard">Contactez-nous</p>
+        </div>
+        <div>
+            {% for message in app.flashes('success') %}
+                <div class="container alert alert-success text-center" id="alertInfo">
+                    {{message}}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="d-flex">
+                    <div class="mr-3">
+                        {{ form_row(form.firstname) }}
+                    </div>
+                    <div class="mr-3">
+                        {{ form_row(form.lastname) }}
+                    </div>
+                    <div class="mr-3">
+                        {{ form_row(form.email) }}
+                    </div>
+                    <div class="mr-3">
+                        {{ form_row(form.phone) }}
+                    </div>
+                </div>
+                <div>
+                    {{ form_row(form.message) }}
+                </div>
+                <button type="submit" class="btn btnPage btn-block">Envoyer</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

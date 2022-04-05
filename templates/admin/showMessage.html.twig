@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message de {{message.mail}}{% endblock %}
+
+{% block body %}
+{% include "admin/partials/navAdmin.html.twig" %}
+<h1>Message de {{message.mail}}</h1>
+<div class="customerTab">
+    <div class="card cardForm tabCustom">
+        <div class="card-header">
+            <p>Recu le: {{message.createdAt|date('d/m/Y')}}</p>
+        </div>
+        <div class="card-body">
+            <p>{{message.message}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

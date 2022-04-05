@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin panel{% endblock %}
+
+{% block body %}
+{% include "admin/partials/navAdmin.html.twig" %}
+<h1>Gestion des Contacts</h1>
+ {% for message in app.flashes('success') %}
+    <div class="container alert alert-success text-center" id="alertInfo">
+        {{message}}
+    </div>
+{% endfor %}
+<div class="customerTab">
+    <div class="card cardForm tabCustom">
+        <table class="table table-hover text-center">
+            <thead>
+                <th>Email</th>
+                <th>Nombres de messages</th>
+                <th>Action</th>
+            </thead>
+            {% for c in customer %}  
+            <tbody>
+                <td><a href="{{path("showCustomer", {id:c.id})}}">{{c.mail}}</a></td>
+                <td>{{c.message|length}}</td>
+                <td>
+                    <form method="POST" style="display:inline-block" action="{{path('deleteCustomer',{id:c.id})}}"
+                       onsubmit="return confirm('Confirmer la suppression)">
+                       <input type="hidden" name="_method" value="delete">
+                       <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ c.id)}}">
+                       <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

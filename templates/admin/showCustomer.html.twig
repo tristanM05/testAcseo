@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}message de {{customer.mail}}{% endblock %}
+
+{% block body %}
+{% include "admin/partials/navAdmin.html.twig" %}
+<h1>Messages de {{customer.mail}}</h1>
+ {% for message in app.flashes('success') %}
+    <div class="container alert alert-success text-center" id="alertInfo">
+        {{message}}
+    </div>
+{% endfor %}
+<div class="customerTab">
+    <div class="card cardForm tabCustom">
+        <table class="table table-hover text-center">
+            <thead>
+                <th>Message</th>
+                <th>Vu</th>
+                <th>Recu le</th>
+                <th>Action</th>
+            </thead>
+            {% for m in message %}  
+            <tbody>
+                <td><a href="{{path("showMessage", {id:m.id})}}">{{m.message}}</a></td>
+                {% if m.vu == 1 %}
+                    <td><i class="fa-solid fa-xmark text-danger"></i></td>
+                {% else %}
+                    <td><i class="fa-solid fa-check text-success"></i></td>
+                {% endif %}
+                <td>{{m.createdAt|date('d/m/Y')}}</td>
+                <td>
+                    <form method="POST" style="display:inline-block" action="{{path('deleteMessage',{id:m.id})}}"
+                       onsubmit="return confirm('Confirmer la suppression)">
+                       <input type="hidden" name="_method" value="delete">
+                       <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ m.id)}}">
+                       <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

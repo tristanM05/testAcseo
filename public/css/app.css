@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0%;
+    width: 100%;
+    background-color: #007da1;
+}
+
+.navigation{
+    background-color: white;
+    margin-bottom: 100px;
+}
+.divBtn{
+    padding: 20px;
+    display: flex;
+    justify-content: end;
+}
+.btnPage{
+    color: white;
+    background-color: #ff6d74;
+    font-size: 18px;
+    border-radius: 40px;
+    padding: 15px;
+}
+.btnPage:hover{
+    background-color: #db4950;
+    color: white;
+}
+.form{
+    display: flex;
+    justify-content: center;
+}
+.pCard{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.cardForm{
+    width: 60%;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.877);
+    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.363);
+}
+.cardLog{
+    margin-top: 150px;
+    width: 30%;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.877);
+    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.363);
+}
+h1{
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+.customerTab{
+    display: flex;
+    justify-content: center;
+}
+.tabCustom{
+    padding: 20px;
+}

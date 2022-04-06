@@ -37,7 +37,7 @@ class ContactController extends AbstractController
         $phone = $contact->getPhone();
 
         if($form->isSubmitted() && $form->isValid()){
-            //initialisation de l'envoie du mail.
+            //initialisation de l'envoi du mail.
             $message = (new TemplatedEmail())
                 ->from($mail)
                 ->to('acseo@contact.fr')
@@ -53,7 +53,7 @@ class ContactController extends AbstractController
                 $existCustomer = $repo->findOneBy(["mail" => $mail]);
                 $now = new DateTime("now");
                 
-                // condition permettant de vérifier si un customer est déja existant ou non, afin de lui créé son propre répertoire si il n'existe pas.
+                // condition permettant de vérifier si un customer est déjà existant ou non, afin de lui créer son propre répertoire s'il n'existe pas.
                 if($existCustomer){
                     $newMessage->setCustomer($existCustomer);
                     $newMessage->setFistrName($firstname);

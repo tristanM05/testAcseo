@@ -9,21 +9,21 @@ class Contact{
     /**
      * @var string|null
      * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=30,minMessage="Le champs doit contenir au moins 2 charactères",maxMessage="Le champs ne doit pas depasser 30 charactères")
+     * @Assert\Length(min=2, max=30,minMessage="Le champs doit contenir au moins 2 caractères",maxMessage="Le champs ne doit pas dépasser 30 caractères")
      */
     private $firstname;
 
     /**
      * @var string|null
      * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=30,minMessage="Le champs doit contenir au moins 2 charactères",maxMessage="Le champs ne doit pas depasser 30 charactères")
+     * @Assert\Length(min=2, max=30,minMessage="Le champs doit contenir au moins 2 caractères",maxMessage="Le champs ne doit pas dépasser 30 caractères")
      */
     private $lastname;
 
     /**
      * @var string|null
      * @Assert\NotBlank()
-     * @Assert\Length(min=10, max="10", minMessage="Le numero de téléphone est incorrect, il doit contenir au moins 10 chiffres", maxMessage="Le numero de téléphone est incorect, il ne doit pas dépasser 10 chiffres")
+     * @Assert\Length(min=10, max="10", minMessage="Le numéro de téléphone est incorrect, il doit contenir au moins 10 chiffres", maxMessage="Le numéro de téléphone est incorrect, il ne doit pas dépasser 10 chiffres")
      * pattern="/[0-9]{10}/"
      */
     private $phone;
@@ -39,15 +39,9 @@ class Contact{
     /**
      * @var string|null
      * @Assert\NotBlank()
-     * @Assert\Length(min=10, minMessage="Votre message doit contenir au moins 10 charactères")
+     * @Assert\Length(min=10, minMessage="Votre message doit contenir au moins 10 caractères")
      */
     private $message;
-
-    // /**
-    //  * @var checkbox|null
-    //  * 
-    //  */
-    // private $check;
 
 
     /**

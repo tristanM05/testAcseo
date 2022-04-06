@@ -29,7 +29,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/customer/{id}", name="showCustomer")
-     * Page de détail d'un customer contenant ces différents messages
+     * Page de détails d'un customer contenant ses différents messages
      */
     public function showCustomer(Customer $customer, MessageRepository $repo){
 
@@ -69,10 +69,10 @@ class AdminController extends AbstractController
         if ($this->isCsrfTokenValid("SUP".$message->getId(),$req->get('_token'))) {
             $manager->remove($message);
             $manager->flush();
-            $this->addFlash("success", "suppréssion éffectuer");
+            $this->addFlash("success", "suppression effectuée");
             return $this->redirectToRoute('adminPanel');
         }
-        $this->addFlash('success','Modification éffectué');
+        $this->addFlash('success','Modification effectuée');
         return $this->redirectToRoute('admin_actu');
     }
 
@@ -90,7 +90,7 @@ class AdminController extends AbstractController
             }
             $manager->remove($customer);
             $manager->flush();
-            $this->addFlash("success", "suppréssion éffectuer");
+            $this->addFlash("success", "suppression effectuée");
             return $this->redirectToRoute('adminPanel');
         }
         $this->addFlash('success','Modification éffectué');
